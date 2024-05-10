@@ -8,6 +8,7 @@ export default function Displayname() {
     const [fname,setFname] = useState("");
 const[lname,setLname] = useState("");
 const [flag,setFlag] = useState(false)
+const [name,setName] = useState("")
 
 const handlefname = (event) => {
     setFname(event.target.value)
@@ -22,6 +23,8 @@ const handlesubmit = (event) => {
     if(lname && fname){
         setFlag(true);
     }
+    let fullname = fname+" "+lname;
+    setName(fullname)
 }
 
     return (
@@ -56,7 +59,7 @@ const handlesubmit = (event) => {
         <button  type="submit" onClick={handlesubmit}>
           Submit
         </button>
-    {flag && <div>Full Name : {fname+" "}{lname}</div>}
+    {flag && <div>Full Name : {name}</div>}
             </form>
         </div>
     )
