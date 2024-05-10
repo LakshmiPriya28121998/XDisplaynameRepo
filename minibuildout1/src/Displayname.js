@@ -1,8 +1,5 @@
 import {useState,useEffect} from 'react'
 
-
-
-
 export default function Displayname() {
 
     const [fname,setFname] = useState("");
@@ -29,7 +26,6 @@ const handlesubmit = (event) => {
 
     return (
         <div>
-           
             <form>
             <h1>Full Name Display</h1>
             <div>
@@ -59,8 +55,9 @@ const handlesubmit = (event) => {
         <button  type="submit" onClick={handlesubmit}>
           Submit
         </button>
-    {flag && <div>Full Name : {name}</div>}
+   
             </form>
+            {flag && <div>Full Name : {name}</div>}
         </div>
     )
 }
