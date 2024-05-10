@@ -56,7 +56,7 @@ const handlesubmit = (event) => {
         <button  type="submit" onClick={handlesubmit}>
           Submit
         </button>
-    {flag && <p>Full Name : {fname+" "}{lname}</p>}
+    {flag && <div>Full Name : {fname+" "}{lname}</div>}
             </form>
         </div>
     )
