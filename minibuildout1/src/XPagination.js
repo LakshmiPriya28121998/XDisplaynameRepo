@@ -23,7 +23,7 @@ const performAPICall = async () => {
     }
     catch (e) {
         if (e.response && e.response.status === 500) {
-         console.log(e.response.data.message);
+         alert(e.response.data.message);
         
         } else {
           alert(
