@@ -9,6 +9,7 @@ let PageSize = 10;
 export default function XPagination() {
   const [currentPage, setCurrentPage] = useState(1);
 const [data, setData] = useState([]);
+const [currentdata, setCurrentdata] = useState([]);
 
 
 useEffect(() => {
@@ -22,26 +23,27 @@ const performAPICall = async () => {
     setData(result1.data);
     }
     catch (e) {
-        if (e.response && e.response.status === 500) {
-         alert(e.response.data.message);
-        
-        } else {
-          alert(
-            "Could not details" );
-        }
+            alert("failed to fetch data");
       }
     
 }
 
 console.log(data);
 
-  const currentTableData = useMemo(() => {
-    const firstPageIndex = (currentPage - 1) * PageSize;
-    const lastPageIndex = firstPageIndex + PageSize;
-    return data.slice(firstPageIndex, lastPageIndex);
-  }, [currentPage]);
+//   const currentTableData = useMemo(() => {
+//     const firstPageIndex = (currentPage - 1) * PageSize;
+//     const lastPageIndex = firstPageIndex + PageSize;
+//     return data.slice(firstPageIndex, lastPageIndex);
+//   }, [currentPage]);
 
-  console.log(currentTableData);
+// const currentTableData = () => {
+//     const firstPageIndex = (currentPage - 1) * PageSize;
+//     const lastPageIndex = firstPageIndex + PageSize;
+//     let res = data.slice(firstPageIndex, lastPageIndex);
+//     setCurrentdata(res)
+//   };
+
+//   console.log(currentdata);
 
   return (
     <>
@@ -54,8 +56,8 @@ console.log(data);
             <th>Role</th>
           </tr>
         </thead>
-        <tbody>
-          {currentTableData.map(item => {
+       
+          {/* {currentdata.map(item => {
             return (
               <tr>
                 <td>{item.id}</td>
@@ -64,8 +66,20 @@ console.log(data);
                 <td>{item.role}</td>
               </tr>
             );
+          })} */}
+             {data.slice(((currentPage - 1) * PageSize),(currentPage*10)).map((item , index) => {
+            return (
+                <tbody key={index}>
+              <tr>
+                <td>{item.id}</td>
+                <td>{item.name}</td>
+                <td>{item.email}</td>
+                <td>{item.role}</td>
+              </tr>
+              </tbody>
+            );
           })}
-        </tbody>
+       
       </table>
       <Pagination
         className="pagination-bar"
