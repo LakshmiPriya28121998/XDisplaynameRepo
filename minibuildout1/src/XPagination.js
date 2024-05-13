@@ -12,38 +12,36 @@ const [data, setData] = useState([]);
 
 
 useEffect(() => {
-    performAPICall()
+    performAPICall();
 },[])
 
 
 const performAPICall = async () => {
-
-       
     try{
     let result1 = await axios.get("https://geektrust.s3-ap-southeast-1.amazonaws.com/adminui-problem/members.json")
-    setData(result1.data)
-
-    
+    setData(result1.data);
     }
     catch (e) {
         if (e.response && e.response.status === 500) {
          console.log(e.response.data.message);
         
         } else {
-          console.log(
+          alert(
             "Could not details" );
         }
       }
     
 }
 
-
+console.log(data);
 
   const currentTableData = useMemo(() => {
     const firstPageIndex = (currentPage - 1) * PageSize;
     const lastPageIndex = firstPageIndex + PageSize;
     return data.slice(firstPageIndex, lastPageIndex);
   }, [currentPage]);
+
+  console.log(currentTableData);
 
   return (
     <>
