@@ -5,16 +5,23 @@ import Counterapp from './Counterapp.js'
 import Calculator from "./Calculator.js"
 import Classcomp from "./Classcomp.js"
 import XPagination from './XPagination.js'
+import Home from './pages/Home/Home'
+import { SnackbarProvider } from 'notistack';
 
 function App() {
   return (
-    <div className="App">
-      {/* <Displayname /> */}
-      {/* <Counterapp /> */}
-      {/* <Calculator /> */}
-      {/* <Classcomp /> */}
-      <XPagination />
-    </div>
+    // <div className="App">
+    //   {/* <Displayname /> */}
+    //   {/* <Counterapp /> */}
+    //   {/* <Calculator /> */}
+    //   {/* <Classcomp /> */}
+    //   {/* <XPagination /> */}
+    // </div>
+     <SnackbarProvider >
+     <div>
+       <Home />
+     </div>
+   </SnackbarProvider>
   );
 }
 
